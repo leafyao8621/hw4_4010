@@ -32,4 +32,6 @@ Graph* new_Graph(int size) {
         puts("graph malloc failure 2");
         return NULL;
     }
+    opt->nodes = new_list();
+    return opt;
 }
