@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Node.h"
 #include "LinkedList.h"
 
 struct LinkedList {
