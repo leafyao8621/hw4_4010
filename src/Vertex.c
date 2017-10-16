@@ -35,7 +35,7 @@ int free_Vertex(Vertex* v) {
         puts("free vertex NULL ptr");
         return 1;
     }
-    free(v->alist);
+    free_list(v->alist);
     free(v);
     return 0;
 }

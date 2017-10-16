@@ -9,6 +9,24 @@ struct LinkedList {
     Node* tail;
 }
 
+struct Node {
+    Node* next;
+    Node* previous;
+    void* data;
+}
+
+Node* new_Node(void* data) {
+    Node* opt = malloc(sizeof(Node));
+    if (opt == NULL) {
+        puts("node malloc error!");
+        return NULL;
+    }
+    opt->data = data;
+    opt->next = NULL;
+    opt->previous = NULL;
+    return opt;
+}
+
 LinkedList* new_list(void) {
     LinkedList* opt = malloc(sizeof(LinkedList));
     if (opt == NULL) {
@@ -90,6 +108,31 @@ void* dequeue(LinkedList* l) {
     return opt;
 }
 
+void* get(LinkedList* l, int ind) {
+    int tind;
+    Node* temp;
+    int l;
+    if (ind < l->size / 2) {
+        tind = 0;
+        temp = l->head;
+        l = 1;
+    } else {
+        tind = l->size - 1;
+        temp = l->tail;
+        l = 0;
+    }
+    while (tind != ind) {
+        if (l) {
+            temp = temp->next;
+            tind++;
+        } else {
+            temp = temp->previous;
+            tind--;
+        }
+    }
+    return temp->data;
+}
+
 int free_list(LinkedList* l) {
     if (l == NULL) {
         puts("free list NULL ptr");
@@ -98,7 +141,6 @@ int free_list(LinkedList* l) {
     Node* temp = l->head;
     for (int i = 0; i < l->size; i++) {
         Node* temp1 = temp->next;
-        free_data(temp->data);
         free(temp);
         temp = temp1;
     }

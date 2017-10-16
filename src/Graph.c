@@ -15,10 +15,6 @@ struct Graph {
     LinkedList* nodes;
 }
 
-int free_data(Node* n) {
-    free_Vertex(get_data(n));
-}
-
 Graph* new_Graph(int size) {
     Graph* opt = malloc(sizeof(Graph));
     if (opt == NULL) {
@@ -34,4 +30,21 @@ Graph* new_Graph(int size) {
     }
     opt->nodes = new_list();
     return opt;
+}
+
+int add_Vertex(Graph* g) {
+    if (g == NULL) {
+        return 1;
+    }
+    Vertex* added = new_Vertex(g->list->size);
+    add_list(g->list, added);
+    return 0;
+}
+
+int add_conn(Graph* g, int from, int to) {
+    add_connection(get())
+}
+
+int init(int num) {
+
 }
