@@ -4,15 +4,15 @@
 
 struct LinkedList {
     int size;
-    Node* head;
-    Node* tail;
-}
+    struct Node* head;
+    struct Node* tail;
+};
 
 struct Node {
-    Node* next;
-    Node* previous;
+    struct Node* next;
+    struct Node* previous;
     void* data;
-}
+};
 
 Node* new_Node(void* data) {
     Node* opt = malloc(sizeof(Node));
@@ -74,7 +74,7 @@ void* pop(LinkedList* l) {
     }
     void* opt = l->tail->data;
     Node* nt = l->tail->previous;
-    free(l->tail)
+    free(l->tail);
     l->tail = nt;
     l->tail->next = NULL;
     l->size--;
@@ -110,18 +110,18 @@ void* dequeue(LinkedList* l) {
 void* get(LinkedList* l, int ind) {
     int tind;
     Node* temp;
-    int l;
+    int le;
     if (ind < l->size / 2) {
         tind = 0;
         temp = l->head;
-        l = 1;
+        le = 1;
     } else {
         tind = l->size - 1;
         temp = l->tail;
-        l = 0;
+        le = 0;
     }
     while (tind != ind) {
-        if (l) {
+        if (le) {
             temp = temp->next;
             tind++;
         } else {
@@ -130,6 +130,15 @@ void* get(LinkedList* l, int ind) {
         }
     }
     return temp->data;
+}
+
+int get_size(LinkedList* l, int* opt) {
+    if (l == NULL) {
+        puts("get size NULL ptr");
+        return 1;
+    }
+    *opt = l->size;
+    return 0;
 }
 
 int free_list(LinkedList* l) {

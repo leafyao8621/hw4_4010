@@ -11,22 +11,36 @@ struct Vertex {
     int color;
     int degree;
     LinkedList* alist;
-}
+};
 
 Vertex* new_Vertex(int index) {
     Vertex* opt = malloc(sizeof(Vertex));
     opt->index = index;
     opt->color = WHITE;
     opt->degree = 0;
-    alist = new_list();
+    opt->alist = new_list();
 }
 
 int add_connection(Vertex* dest, Vertex* src) {
-    if (dest == NULL or src == NULL) {
+    if (dest == NULL || src == NULL) {
         puts("add connection NULL ptr");
         return 1;
     }
     add_list(dest->alist, src);
+    dest->degree += 1;
+    return 0;
+}
+
+int print_Vertex(Vertex* v) {
+    if (v == NULL) {
+        puts("print vertex NULL ptr");
+        return 1;
+    }
+    printf("index: %d, adjacents: ", v->index);
+    for (int i = 0; i < v->degree - 1; i++) {
+        printf("%d, ", ((Vertex*)get(v->alist, i))->index);
+    }
+    printf("%d\n", ((Vertex*)get(v->alist, v->degree - 1))->index);
     return 0;
 }
 

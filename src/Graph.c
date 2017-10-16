@@ -13,7 +13,7 @@ struct Graph {
     int sum_degrees;
     int* degrees;
     LinkedList* nodes;
-}
+};
 
 Graph* new_Graph(int size) {
     Graph* opt = malloc(sizeof(Graph));
@@ -36,13 +36,15 @@ int add_Vertex(Graph* g) {
     if (g == NULL) {
         return 1;
     }
-    Vertex* added = new_Vertex(g->list->size);
-    add_list(g->list, added);
+    int pos;
+    get_size(g->nodes, &pos);
+    Vertex* added = new_Vertex(pos);
+    add_list(g->nodes, added);
     return 0;
 }
 
 int add_conn(Graph* g, int from, int to) {
-    add_connection((Vertex*)get(g->list, from), (Vertex*)get(g->list, to));
+    add_connection((Vertex*)get(g->nodes, from), (Vertex*)get(g->nodes, to));
 }
 
 int init(Graph* g, int num) {
@@ -50,7 +52,7 @@ int init(Graph* g, int num) {
         puts("Graph init NULL ptr");
         return 1;
     }
-    if (num > g->size) {
+    if (num > g->max_size) {
         puts("graph init num > size");
         return 1;
     }
@@ -61,11 +63,24 @@ int init(Graph* g, int num) {
         g->degrees[i] = num - 1;
         for (int j = 0; j < num; j++) {
             if (i != j) {
-                add_connection((Vertex*)get(g->list, i),
-                (Vertex*)get(g->list, j));
+                add_connection((Vertex*)get(g->nodes, i),
+                (Vertex*)get(g->nodes, j));
             }
         }
-        g->sum_degrees += num - 1;
+        g->sum_degrees += (num - 1);
+    }
+    return 0;
+}
+
+int print_Graph(Graph* g) {
+    if (g == NULL) {
+        puts("print graph NULL ptr");
+        return 1;
+    }
+    int size;
+    get_size(g->nodes, &size);
+    for (int i = 0; i < size; i++) {
+        print_Vertex(get(g->nodes, i));
     }
     return 0;
 }
