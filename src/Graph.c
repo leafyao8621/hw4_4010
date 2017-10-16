@@ -42,9 +42,30 @@ int add_Vertex(Graph* g) {
 }
 
 int add_conn(Graph* g, int from, int to) {
-    add_connection(get())
+    add_connection((Vertex*)get(g->list, from), (Vertex*)get(g->list, to));
 }
 
-int init(int num) {
-
+int init(Graph* g, int num) {
+    if (g == NULL) {
+        puts("Graph init NULL ptr");
+        return 1;
+    }
+    if (num > g->size) {
+        puts("graph init num > size");
+        return 1;
+    }
+    for (int i = 0; i < num; i++) {
+        add_Vertex(g);
+    }
+    for (int i = 0; i < num; i++) {
+        g->degrees[i] = num - 1;
+        for (int j = 0; j < num; j++) {
+            if (i != j) {
+                add_connection((Vertex*)get(g->list, i),
+                (Vertex*)get(g->list, j));
+            }
+        }
+        g->sum_degrees += num - 1;
+    }
+    return 0;
 }
