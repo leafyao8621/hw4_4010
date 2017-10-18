@@ -84,3 +84,17 @@ int print_Graph(Graph* g) {
     }
     return 0;
 }
+
+int free_Graph(Graph* g) {
+    if (g == NULL) {
+        puts("free grph NULL ptr");
+        return 1;
+    }
+    int size;
+    get_size(g->nodes, &size);
+    for (int i = 0; i < size; i++) {
+        free_Vertex(pop(g->nodes));
+    }
+    free_list(g->nodes);
+    return 0;
+}
