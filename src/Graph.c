@@ -48,6 +48,7 @@ int add_Vertex(Graph* g) {
 
 int add_conn(Graph* g, int from, int to) {
     add_connection((Vertex*)get(g->nodes, from), (Vertex*)get(g->nodes, to));
+    g->sum_degrees += 1;
 }
 
 int init(Graph* g, int num) {
@@ -63,14 +64,11 @@ int init(Graph* g, int num) {
         add_Vertex(g);
     }
     for (int i = 0; i < num; i++) {
-        g->degrees[i] = num - 1;
         for (int j = 0; j < num; j++) {
             if (i != j) {
-                add_connection((Vertex*)get(g->nodes, i),
-                (Vertex*)get(g->nodes, j));
+                add_conn(g, i, j);
             }
         }
-        g->sum_degrees += (num - 1);
     }
     return 0;
 }
@@ -80,6 +78,7 @@ int print_Graph(Graph* g) {
         puts("print graph NULL ptr");
         return 1;
     }
+    printf("%d\n", g->sum_degrees);
     print_list(g->nodes);
     return 0;
 }

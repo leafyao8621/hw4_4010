@@ -6,6 +6,7 @@ int add_list(LinkedList* l, void* data);
 void* pop(LinkedList* l);
 void* dequeue(LinkedList* l);
 void* get(LinkedList* l, int ind);
+int remove_ind(LinkedList* l, int ind);
 int get_size(LinkedList* l, int* opt);
 int free_list(LinkedList* l);
 int print_list(LinkedList* l);

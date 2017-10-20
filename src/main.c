@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "Graph.h"
 
-int main() {
+int main(int argc, const char** argv) {
     Graph* g = new_Graph(1000);
     init(g, 5);
     print_Graph(g);

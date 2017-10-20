@@ -141,7 +141,7 @@ void* get(LinkedList* l, int ind) {
     return temp->data;
 }
 
-int remove(LinkedList* l, int ind) {
+int remove_ind(LinkedList* l, int ind) {
     if (l == NULL) {
         puts("remove NULL ptr");
         return 1;
@@ -185,9 +185,10 @@ int free_list(LinkedList* l) {
     {
         int id = omp_get_thread_num();
         for (int i = id; i < l->size; i+=4) {
-            Node* temp1 = temp->next;
+
             #pragma omp critical
             {
+                Node* temp1 = temp->next;
                 free(temp);
                 temp = temp1;
             }
