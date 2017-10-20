@@ -13,6 +13,10 @@ struct Vertex {
     LinkedList* alist;
 };
 
+// int handle_print(void* data) {
+//     print_Vertex((Vertex*)data);
+// }
+
 Vertex* new_Vertex(int index) {
     Vertex* opt = malloc(sizeof(Vertex));
     opt->index = index;

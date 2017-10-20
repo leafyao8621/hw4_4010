@@ -15,6 +15,9 @@ struct Graph {
     LinkedList* nodes;
 };
 
+int handle_print(void* data) {
+    print_Vertex((Vertex*)data);
+}
 Graph* new_Graph(int size) {
     Graph* opt = malloc(sizeof(Graph));
     if (opt == NULL) {
@@ -77,11 +80,7 @@ int print_Graph(Graph* g) {
         puts("print graph NULL ptr");
         return 1;
     }
-    int size;
-    get_size(g->nodes, &size);
-    for (int i = 0; i < size; i++) {
-        print_Vertex(get(g->nodes, i));
-    }
+    print_list(g->nodes);
     return 0;
 }
 

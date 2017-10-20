@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -std=c99 -o main src/*.c
+gcc -std=c99 -o main src/*.c -fopenmp

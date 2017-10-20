@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
 #include "LinkedList.h"
 
 struct LinkedList {
@@ -111,6 +112,14 @@ void* get(LinkedList* l, int ind) {
     int tind;
     Node* temp;
     int le;
+    if (l == NULL) {
+        puts("get NULL ptr");
+        return NULL;
+    }
+    if (ind < 0 || ind >= l->size) {
+        puts("get index out of bound");
+        return NULL;
+    }
     if (ind < l->size / 2) {
         tind = 0;
         temp = l->head;
@@ -132,6 +141,30 @@ void* get(LinkedList* l, int ind) {
     return temp->data;
 }
 
+int remove(LinkedList* l, int ind) {
+    if (l == NULL) {
+        puts("remove NULL ptr");
+        return 1;
+    }
+    if (ind < 0 || ind >= l->size) {
+        puts("remove index out of bound");
+        return 1;
+    }
+    if (ind == 0) {
+        free(dequeue(l));
+        return 0;
+    }
+    if (ind == l->size - 1) {
+        free(pop(l));
+        return 0;
+    }
+    Node* rm = get(l, ind);
+    rm->previous->next = rm->next;
+    rm->next->previous = rm->previous;
+    free(rm);
+    return 0;
+}
+
 int get_size(LinkedList* l, int* opt) {
     if (l == NULL) {
         puts("get size NULL ptr");
@@ -147,11 +180,40 @@ int free_list(LinkedList* l) {
         return 1;
     }
     Node* temp = l->head;
-    for (int i = 0; i < l->size; i++) {
-        Node* temp1 = temp->next;
-        free(temp);
-        temp = temp1;
+    omp_set_num_threads(4);
+    #pragma omp parallel
+    {
+        int id = omp_get_thread_num();
+        for (int i = id; i < l->size; i+=4) {
+            Node* temp1 = temp->next;
+            #pragma omp critical
+            {
+                free(temp);
+                temp = temp1;
+            }
+        }
     }
     free(l);
+    return 0;
+}
+
+int print_list(LinkedList* l) {
+    if (l == NULL) {
+        puts("free list NULL ptr");
+        return 1;
+    }
+    Node* temp = l->head;
+    omp_set_num_threads(4);
+    #pragma omp parallel
+    {
+        int id = omp_get_thread_num();
+        for (int i = id; i < l->size; i+=4) {
+            #pragma omp critical
+            {
+                handle_print(temp->data);
+                temp = temp->next;
+            }
+        }
+    }
     return 0;
 }
