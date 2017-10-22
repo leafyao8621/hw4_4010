@@ -151,17 +151,38 @@ int remove_ind(LinkedList* l, int ind) {
         return 1;
     }
     if (ind == 0) {
-        free(dequeue(l));
+        dequeue(l);
         return 0;
     }
     if (ind == l->size - 1) {
-        free(pop(l));
+        pop(l);
         return 0;
     }
-    Node* rm = get(l, ind);
-    rm->previous->next = rm->next;
-    rm->next->previous = rm->previous;
-    free(rm);
+    int tind;
+    Node* temp;
+    int le;
+    if (ind < l->size / 2) {
+        tind = 0;
+        temp = l->head;
+        le = 1;
+    } else {
+        tind = l->size - 1;
+        temp = l->tail;
+        le = 0;
+    }
+    while (tind != ind) {
+        if (le) {
+            temp = temp->next;
+            tind++;
+        } else {
+            temp = temp->previous;
+            tind--;
+        }
+    }
+    temp->previous->next = temp->next;
+    temp->next->previous = temp->previous;
+    free(temp);
+    l->size--;
     return 0;
 }
 
@@ -180,19 +201,10 @@ int free_list(LinkedList* l) {
         return 1;
     }
     Node* temp = l->head;
-    omp_set_num_threads(4);
-    #pragma omp parallel
-    {
-        int id = omp_get_thread_num();
-        for (int i = id; i < l->size; i+=4) {
-
-            #pragma omp critical
-            {
-                Node* temp1 = temp->next;
-                free(temp);
-                temp = temp1;
-            }
-        }
+    for (int i = 0; i < l->size; i++) {
+        Node* temp1 = temp->next;
+        free(temp);
+        temp = temp1;
     }
     free(l);
     return 0;
@@ -204,17 +216,9 @@ int print_list(LinkedList* l) {
         return 1;
     }
     Node* temp = l->head;
-    omp_set_num_threads(4);
-    #pragma omp parallel
-    {
-        int id = omp_get_thread_num();
-        for (int i = id; i < l->size; i+=4) {
-            #pragma omp critical
-            {
-                handle_print(temp->data);
-                temp = temp->next;
-            }
-        }
+    for (int i = 0; i < l->size; i++) {
+        handle_print(temp->data);
+        temp = temp->next;
     }
     return 0;
 }

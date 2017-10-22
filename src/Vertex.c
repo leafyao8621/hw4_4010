@@ -13,10 +13,6 @@ struct Vertex {
     LinkedList* alist;
 };
 
-// int handle_print(void* data) {
-//     print_Vertex((Vertex*)data);
-// }
-
 Vertex* new_Vertex(int index) {
     Vertex* opt = malloc(sizeof(Vertex));
     opt->index = index;
@@ -40,11 +36,68 @@ int print_Vertex(Vertex* v) {
         puts("print vertex NULL ptr");
         return 1;
     }
-    printf("index: %d, adjacents: ", v->index);
-    for (int i = 0; i < v->degree - 1; i++) {
-        printf("%d, ", ((Vertex*)get(v->alist, i))->index);
+    printf("index: %d, degree: %d, adjacents: ", v->index, v->degree);
+    if (v->degree > 0) {
+        for (int i = 0; i < v->degree - 1; i++) {
+            printf("%d, ", ((Vertex*)get(v->alist, i))->index);
+        }
+        printf("%d\n", ((Vertex*)get(v->alist, v->degree - 1))->index);
+    } else {
+        printf("None\n");
+        return 0;
     }
-    printf("%d\n", ((Vertex*)get(v->alist, v->degree - 1))->index);
+    return 0;
+}
+
+int get_degree(Vertex* v, int* opt) {
+    if (v == NULL || opt == NULL) {
+        puts("get degree NULL ptr");
+        return 1;
+    }
+    *opt = v->degree;
+    return 0;
+}
+
+int get_index(Vertex* v, int* opt) {
+    if (v == NULL || opt == NULL) {
+        puts("get index NULL ptr");
+        return 1;
+    }
+    *opt = v->index;
+}
+
+LinkedList* get_alist(Vertex* v) {
+    if (v == NULL) {
+        puts("get alist NULL ptr");
+        return NULL;
+    }
+    return v->alist;
+}
+
+int inc_degree(Vertex* v, int offset) {
+    if (v == NULL) {
+        puts("idegree NULL ptr");
+        return 1;
+    }
+    v->degree += offset;
+    return 0;
+}
+
+int get_color(Vertex* v, int* opt) {
+    if (v == NULL || opt == NULL) {
+        puts("get color NULL ptr");
+        return 1;
+    }
+    *opt = v->color;
+    return 0;
+}
+
+int set_color(Vertex* v, int color) {
+    if (v == NULL) {
+        puts("set color NULL ptr");
+        return 1;
+    }
+    v->color = color;
     return 0;
 }
 

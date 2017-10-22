@@ -1,0 +1,51 @@
+sum of degrees: 40
+index: 0, degree: 5, adjacents: 1, 2, 3, 4, 14
+index: 1, degree: 7, adjacents: 0, 2, 3, 4, 7, 8, 10
+index: 2, degree: 5, adjacents: 0, 1, 3, 4, 13
+index: 3, degree: 5, adjacents: 0, 1, 2, 4, 9
+index: 4, degree: 6, adjacents: 0, 1, 2, 3, 5, 6
+index: 5, degree: 2, adjacents: 4, 12
+index: 6, degree: 1, adjacents: 4
+index: 7, degree: 1, adjacents: 1
+index: 8, degree: 1, adjacents: 1
+index: 9, degree: 2, adjacents: 3, 11
+index: 10, degree: 1, adjacents: 1
+index: 11, degree: 1, adjacents: 9
+index: 12, degree: 1, adjacents: 5
+index: 13, degree: 1, adjacents: 2
+index: 14, degree: 1, adjacents: 0
+
+remove 11
+sum of degrees: 38
+index: 0, degree: 5, adjacents: 1, 2, 3, 4, 14
+index: 1, degree: 7, adjacents: 0, 2, 3, 4, 7, 8, 10
+index: 2, degree: 5, adjacents: 0, 1, 3, 4, 13
+index: 3, degree: 5, adjacents: 0, 1, 2, 4, 9
+index: 4, degree: 6, adjacents: 0, 1, 2, 3, 5, 6
+index: 5, degree: 2, adjacents: 4, 12
+index: 6, degree: 1, adjacents: 4
+index: 7, degree: 1, adjacents: 1
+index: 8, degree: 1, adjacents: 1
+index: 9, degree: 1, adjacents: 3
+index: 10, degree: 1, adjacents: 1
+index: 12, degree: 1, adjacents: 5
+index: 13, degree: 1, adjacents: 2
+index: 14, degree: 1, adjacents: 0
+
+remove 1
+sum of degrees: 24
+index: 0, degree: 4, adjacents: 2, 3, 4, 14
+index: 2, degree: 4, adjacents: 0, 3, 4, 13
+index: 3, degree: 4, adjacents: 0, 2, 4, 9
+index: 4, degree: 5, adjacents: 0, 2, 3, 5, 6
+index: 5, degree: 2, adjacents: 4, 12
+index: 6, degree: 1, adjacents: 4
+index: 7, degree: 0, adjacents: None
+index: 8, degree: 0, adjacents: None
+index: 9, degree: 1, adjacents: 3
+index: 10, degree: 0, adjacents: None
+index: 12, degree: 1, adjacents: 5
+index: 13, degree: 1, adjacents: 2
+index: 14, degree: 1, adjacents: 0
+
+2

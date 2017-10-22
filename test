@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "data"
+for i in {1..1000}; do
+    ./main $1 $2
+done
