@@ -29,10 +29,6 @@ Graph* new_Graph(void) {
         return NULL;
     }
     opt->sum_degrees = 0;
-    if (opt->degrees == NULL) {
-        puts("graph malloc failure 2");
-        return NULL;
-    }
     opt->nodes = new_list();
     return opt;
 }

@@ -35,7 +35,7 @@ int main(int argc, const char** argv) {
     int connected;
     check_conn(g, &connected);
     int size = initial_size + add;
-    int count;
+    int count = 0;
     while (size > 1 && connected) {
         int ind = ((double)rand()) / RAND_MAX * size;
         remove_Vertex(g, ind);
