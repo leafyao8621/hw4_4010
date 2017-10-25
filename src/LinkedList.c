@@ -187,9 +187,9 @@ void* get(LinkedList* l, int ind) {
 
 /**
  * removes an arbitrary node from a linked list
- * @param  l   [description]
- * @param  ind [description]
- * @return     [description]
+ * @param  l   a pointer to the linked list of interest
+ * @param  ind the index of the node to be removed
+ * @return     whether successful
  */
 int remove_ind(LinkedList* l, int ind) {
     if (l == NULL) {
@@ -200,10 +200,12 @@ int remove_ind(LinkedList* l, int ind) {
         puts("remove index out of bound");
         return 1;
     }
+    //call dequeue if index is zero
     if (ind == 0) {
         dequeue(l);
         return 0;
     }
+    //call pop if index is size - 1
     if (ind == l->size - 1) {
         pop(l);
         return 0;
@@ -236,6 +238,12 @@ int remove_ind(LinkedList* l, int ind) {
     return 0;
 }
 
+/**
+ * gets the size of a linked list
+ * @param  l   a pointer to the linked list of interest
+ * @param  opt a pointer to the variable the result will be put in
+ * @return     whether successful
+ */
 int get_size(LinkedList* l, int* opt) {
     if (l == NULL) {
         puts("get size NULL ptr");
@@ -245,6 +253,12 @@ int get_size(LinkedList* l, int* opt) {
     return 0;
 }
 
+/**
+ * frees the memory occupied by using a linked list pointer and pointers to all
+ * its nodes
+ * @param  l a pointer to the linked list of interest
+ * @return   whether successful
+ */
 int free_list(LinkedList* l) {
     if (l == NULL) {
         puts("free list NULL ptr");
@@ -260,6 +274,11 @@ int free_list(LinkedList* l) {
     return 0;
 }
 
+/**
+ * prints a linked list
+ * @param  l a pointer to the linked list of interest
+ * @return   whether successful
+ */
 int print_list(LinkedList* l) {
     if (l == NULL) {
         puts("free list NULL ptr");
@@ -267,6 +286,7 @@ int print_list(LinkedList* l) {
     }
     Node* temp = l->head;
     for (int i = 0; i < l->size; i++) {
+        //calls the handler function to be implemented to print out data
         handle_print(temp->data);
         temp = temp->next;
     }

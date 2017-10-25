@@ -6,11 +6,21 @@
 #define GRAY 1
 #define BLACK 2
 
+/**
+ * represents a graph
+ * @param sum_degrees sum of degrees
+ * @param nodes       linked list of vertices
+ */
 struct Graph {
     int sum_degrees;
     LinkedList* nodes;
 };
 
+/**
+ * implementation of the print handler function used in print_list
+ * @param  data the data to be printed
+ * @return      whether successful
+ */
 int handle_print(void* data) {
     if (data == NULL) {
         puts("handle print NULL ptr");
@@ -20,6 +30,10 @@ int handle_print(void* data) {
     return 0;
 }
 
+/**
+ * creates a new graph
+ * @return  a pointer to the newly created graph
+ */
 Graph* new_Graph(void) {
     Graph* opt = malloc(sizeof(Graph));
     if (opt == NULL) {
@@ -31,6 +45,11 @@ Graph* new_Graph(void) {
     return opt;
 }
 
+/**
+ * adds a vertex to a graph
+ * @param  g a pointer to the graph of interest
+ * @return   whether successful
+ */
 int add_Vertex(Graph* g) {
     if (g == NULL) {
         return 1;
@@ -42,11 +61,24 @@ int add_Vertex(Graph* g) {
     return 0;
 }
 
+/**
+ * adds a connection from a vertex to another in a graph
+ * @param  g    a pointer to the graph of interest
+ * @param  from index of the from node
+ * @param  to   index of the to node
+ * @return      whether successful
+ */
 int add_conn(Graph* g, int from, int to) {
     add_connection((Vertex*)get(g->nodes, from), (Vertex*)get(g->nodes, to));
     g->sum_degrees += 1;
 }
 
+/**
+ * removes a vertex from a graph
+ * @param  g   a pointer to the graph of interest
+ * @param  ind current index of the vertex in the linked list of vertices
+ * @return     whether successful
+ */
 int remove_Vertex(Graph* g, int ind) {
     Vertex* rm = get(g->nodes, ind);
     int sind;
@@ -56,6 +88,8 @@ int remove_Vertex(Graph* g, int ind) {
     g->sum_degrees -= rmdeg;
     int size;
     get_size(g->nodes, &size);
+    //cleans up the vertex's existence in all adjacency lists, and sets sum of
+    //degrees accordingly
     for (int i = 0; i < size; i++) {
         if (i != ind) {
             Vertex* v = get(g->nodes, i);
@@ -80,6 +114,13 @@ int remove_Vertex(Graph* g, int ind) {
     return 0;
 }
 
+/**
+ * picks the index of a vertex to be removed from a graph using the empirical cd
+ * f based on the degrees of the nodes in a graph
+ * @param  g   a pointer to the graph of interest
+ * @param  opt a pointer to the variable to put the result in
+ * @return     whether successful
+ */
 int pick_vertex(Graph* g, int* opt) {
     if (g == NULL || opt == NULL) {
         puts("pick vertex NULL ptr");
@@ -99,6 +140,12 @@ int pick_vertex(Graph* g, int* opt) {
     return 0;
 }
 
+/**
+ * initialize a graph to have a certain number of vertices, fully connected
+ * @param  g   a pointer to the graph of interest
+ * @param  num initial number of vertices
+ * @return     whether successful
+ */
 int init(Graph* g, int num) {
     if (g == NULL) {
         puts("Graph init NULL ptr");
@@ -117,6 +164,11 @@ int init(Graph* g, int num) {
     return 0;
 }
 
+/**
+ * prints out a representation of a graph
+ * @param  g a pointer to the graph of interest
+ * @return   whether successful
+ */
 int print_Graph(Graph* g) {
     if (g == NULL) {
         puts("print graph NULL ptr");
@@ -127,6 +179,11 @@ int print_Graph(Graph* g) {
     return 0;
 }
 
+/**
+ * frees memory occupied by a graph
+ * @param  g a pointer to the graph of interest
+ * @return   whether successful
+ */
 int free_Graph(Graph* g) {
     if (g == NULL) {
         puts("free grph NULL ptr");
@@ -141,6 +198,12 @@ int free_Graph(Graph* g) {
     return 0;
 }
 
+/**
+ * checks whether a graph is connected using a bfs
+ * @param  g   a pointer to the graph of interest
+ * @param  opt a pointer to the varible to put the output in
+ * @return     whether successful
+ */
 int check_conn(Graph* g, int* opt) {
     if (g == NULL || opt == NULL) {
         puts("check conn NULL ptr");
