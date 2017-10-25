@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Graph.h"
+#include "Vertex.h"
 
 int main(int argc, const char** argv) {
     srand(time(NULL));

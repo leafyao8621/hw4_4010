@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.7)  22 OCT 2017 16:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.7)  24 OCT 2017 20:49
 entering extended mode
 **./hw4.tex
 (hw4.tex
@@ -206,24 +206,131 @@ File: ../chk.txt  (verbatim)
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 10--12
+Underfull \hbox (badness 10000) in paragraph at lines 10--13
 
  []
 
-[2] (hw4.aux) ) 
+<../Rplots.pdf, id=7, 505.89pt x 505.89pt>
+File: ../Rplots.pdf Graphic file (type pdf)
+ <use ../Rplots.pdf>
+Package pdftex.def Info: ../Rplots.pdf used on input line 18.
+(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
+File: ../Rplots.pdf Graphic file (type pdf)
+
+<use ../Rplots.pdf>
+Package pdftex.def Info: ../Rplots.pdf used on input line 18.
+(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
+ <../Rplots.pdf, id=10, page=1, 505.89pt x 505.89pt>
+File: ../Rplots.pdf Graphic file (type pdf)
+
+<use ../Rplots.pdf, page 1>
+Package pdftex.def Info: ../Rplots.pdf, page1 used on input line 18.
+(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
+File: ../Rplots.pdf Graphic file (type pdf)
+ <use ../Rplots.pdf, page 1>
+Package pdftex.def Info: ../Rplots.pdf, page1 used on input line 18.
+(pdftex.def)             Requested size: 615.37086pt x 615.37086pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--18
+
+ []
+
+[2]
+File: ../Rplots.pdf Graphic file (type pdf)
+ <use ../Rplots.pdf, page 1>
+Package pdftex.def Info: ../Rplots.pdf, page1 used on input line 18.
+(pdftex.def)             Requested size: 615.37086pt x 615.37086pt.
+File: ../Rplots.pdf Graphic file (type pdf)
+ <use ../Rplots.pdf, page 1>
+Package pdftex.def Info: ../Rplots.pdf, page1 used on input line 18.
+(pdftex.def)             Requested size: 615.37086pt x 615.37086pt.
+File: ../Rplots.pdf Graphic file (type pdf)
+
+<use ../Rplots.pdf, page 1>
+Package pdftex.def Info: ../Rplots.pdf, page1 used on input line 18.
+(pdftex.def)             Requested size: 615.37086pt x 615.37086pt.
+ [3 <../Rplots.pdf>]
+<../Rplots.pdf, id=23, page=2, 505.89pt x 505.89pt>
+File: ../Rplots.pdf Graphic file (type pdf)
+
+<use ../Rplots.pdf, page 2>
+Package pdftex.def Info: ../Rplots.pdf, page2 used on input line 18.
+(pdftex.def)             Requested size: 615.37086pt x 615.37086pt.
+File: ../Rplots.pdf Graphic file (type pdf)
+ <use ../Rplots.pdf, page 2>
+Package pdftex.def Info: ../Rplots.pdf, page2 used on input line 18.
+(pdftex.def)             Requested size: 615.37086pt x 615.37086pt.
+File: ../Rplots.pdf Graphic file (type pdf)
+
+<use ../Rplots.pdf, page 2>
+Package pdftex.def Info: ../Rplots.pdf, page2 used on input line 18.
+(pdftex.def)             Requested size: 615.37086pt x 615.37086pt.
+ [4 <../Rplots.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 27.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--29
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--37
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--45
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
+
+ []
+
+[5] (hw4.aux) ) 
 Here is how much of TeX's memory you used:
- 2802 strings out of 493323
- 40008 string characters out of 3139070
+ 2831 strings out of 493323
+ 40521 string characters out of 3139070
  110895 words of memory out of 3000000
- 6319 multiletter control sequences out of 15000+200000
+ 6343 multiletter control sequences out of 15000+200000
  3808 words of font info for 15 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,6n,39p,252b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,18n,46p,252b,500s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr1
-0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on hw4.pdf (2 pages, 32278 bytes).
+0.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on hw4.pdf (5 pages, 53433 bytes).
 PDF statistics:
- 17 PDF objects out of 1000 (max. 8388607)
+ 41 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

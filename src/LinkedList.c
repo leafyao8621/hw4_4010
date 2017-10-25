@@ -3,18 +3,35 @@
 #include <omp.h>
 #include "LinkedList.h"
 
+/**
+ * Represents a linked list
+ * @param  size size of the linked list
+ * @param  head first item in the linked list
+ * @param  tail last item in the linked list
+ */
 struct LinkedList {
     int size;
     struct Node* head;
     struct Node* tail;
 };
 
+/**
+ * reprensts a node in a linked list
+ * @param  data     data the node holds
+ * @param  next     next node in the linked list
+ * @param  previous previous node in the linked list
+ */
 struct Node {
     struct Node* next;
     struct Node* previous;
     void* data;
 };
 
+/**
+ * creates a pointer to a new node
+ * @param  data data the node holds
+ * @return      a pointer to the newly created node
+ */
 Node* new_Node(void* data) {
     Node* opt = malloc(sizeof(Node));
     if (opt == NULL) {
@@ -27,6 +44,10 @@ Node* new_Node(void* data) {
     return opt;
 }
 
+/**
+ * creates a pointer to a new linked list
+ * @return  a pointer to a newly created linked list
+ */
 LinkedList* new_list(void) {
     LinkedList* opt = malloc(sizeof(LinkedList));
     if (opt == NULL) {
@@ -39,6 +60,12 @@ LinkedList* new_list(void) {
     return opt;
 }
 
+/**
+ * add to the end of a linked list
+ * @param  l    a pointer to the linked list of interest
+ * @param  data the data a new node will hold
+ * @return      whether successful
+ */
 int add_list(LinkedList* l, void* data) {
     if (l == NULL) {
         return 1;
@@ -56,6 +83,11 @@ int add_list(LinkedList* l, void* data) {
     return 0;
 }
 
+/**
+ * removes an item from the end of the linked list
+ * @param l a pointer to the linked list of interest
+ * @return  the data the removed node holds
+ */
 void* pop(LinkedList* l) {
     if (l == NULL) {
         puts("pop NULL ptr");
@@ -82,6 +114,11 @@ void* pop(LinkedList* l) {
     return opt;
 }
 
+/**
+ * removes an item from the head of the linked list
+ * @param l a pointer to the linked list of interest
+ * @return  the data the removed node holds
+ */
 void* dequeue(LinkedList* l) {
     if (l == NULL) {
         puts("dequeue NULL ptr");
@@ -108,6 +145,12 @@ void* dequeue(LinkedList* l) {
     return opt;
 }
 
+/**
+ * gets the data an arbitrary node in the list holds
+ * @param l   a pointer to the linked list of interest
+ * @param ind index of the node in the linked list
+ * @return    the data the node of interest holds
+ */
 void* get(LinkedList* l, int ind) {
     int tind;
     Node* temp;
@@ -120,6 +163,7 @@ void* get(LinkedList* l, int ind) {
         puts("get index out of bound");
         return NULL;
     }
+    //if index is less thqn half the size, go from head; oterwise, go from tail
     if (ind < l->size / 2) {
         tind = 0;
         temp = l->head;
@@ -141,6 +185,12 @@ void* get(LinkedList* l, int ind) {
     return temp->data;
 }
 
+/**
+ * removes an arbitrary node from a linked list
+ * @param  l   [description]
+ * @param  ind [description]
+ * @return     [description]
+ */
 int remove_ind(LinkedList* l, int ind) {
     if (l == NULL) {
         puts("remove NULL ptr");

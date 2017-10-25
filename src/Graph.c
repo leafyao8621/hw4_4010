@@ -2,14 +2,12 @@
 #include <stdlib.h>
 #include "Graph.h"
 #include "Vertex.h"
-#include "LinkedList.h"
 #define WHITE 0
 #define GRAY 1
 #define BLACK 2
 
 struct Graph {
     int sum_degrees;
-    int* degrees;
     LinkedList* nodes;
 };
 
@@ -180,6 +178,7 @@ int check_conn(Graph* g, int* opt) {
     for (int i = 0; i < num_v; i++) {
         set_color(get(g->nodes, i), WHITE);
     }
+    free_list(queue);
     *opt = cnt == num_v;
     return 0;
 }
